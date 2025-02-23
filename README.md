@@ -3,7 +3,10 @@
 cd D:\GiThUb\MOMMYcare_Website\project
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 npm install
-npm run dev 
+npm audit
+
+npm run dev
+
 </p>
 
 <p>

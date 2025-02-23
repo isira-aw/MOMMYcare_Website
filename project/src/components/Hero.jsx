@@ -28,7 +28,7 @@ export default function Hero() {
     <section id="home" className="min-h-screen pt-16 bg-gradient-to-b from-primary-50 to-white background-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <motion.div className="motion.div-devtag"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -39,15 +39,8 @@ export default function Hero() {
             <p className="text-lg text-gray-600 mb-8">
               A postpartum wellness app designed to support moms in their recovery journey, mental health, and newborn care.
             </p>
-            
-            {/* <motion.button
-              className="bg-primary-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download App
-            </motion.button> */}
-          </motion.div>
+
+          </motion.div >
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -74,24 +67,17 @@ export default function Hero() {
                   <img
                     src={mockup.image}
                     alt={mockup.alt}
-                    className="w-full h-auto rounded-lg shadow-xl fixed-size-image"
+                    className="w-full h-auto rounded-lg shadow-xl fixed-size-image-home"
                   />
                 </SwiperSlide>
               ))}
 
             </Swiper>
           </motion.div>
+          
         </div>
-        <div className="bg-black text-white p-8 rounded-2xl flex flex-col items-center">
-      <h2 className="text-2xl font-bold mb-2">Your Wellness Matters...Start Today!</h2>
-      <p className="text-center mb-6">
-        Download MOMMYCare+ and get expert-backed support for your recovery, mental well-being, and baby care - all in one place!
-      </p>
-      <button className="bg-white text-black font-semibold py-2 px-6 rounded-full shadow-md hover:bg-gray-200 transition">
-        Download App
-      </button>
-    </div>
       </div>
+      
     </section>
   );
 }

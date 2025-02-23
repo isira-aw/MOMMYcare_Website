@@ -1,39 +1,45 @@
-import { motion } from 'framer-motion';
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
-import axios from 'axios';
-import '/src/styles.css';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import "/src/styles.css";
 
 export default function ContactUs() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [password, setPassword] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);  // Track success message
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  }); // Manage form data
 
-  const handleSendMessage = async () => {
-    if (!email || !message || !password) {
-      alert('Please fill in all fields!');
-      return;
-    }
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
-    // Open confirmation modal
-    setIsModalOpen(true);
-  };
+    // Replace with your actual Web3Forms access key
+    formData.append("access_key", "0f50776d-1bd6-4534-abf1-56e5c631935c");
 
-  const confirmSend = async () => {
-    try {
-      const response = await axios.post('http://127.0.0.1:8000/send_email/', {
-        name,
-        email,
-        message,
-        password,
-      });
-      alert('Message sent successfully!');
-    } catch (error) {
-      alert('There was an error sending the message.');
-    } finally {
-      setIsModalOpen(false);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      setIsSuccess(true); // Show success message
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      }); // Clear form fields
+      setTimeout(() => {
+        setIsSuccess(false); // Hide success message after a few seconds
+      }, 4000); // 4 seconds timeout
     }
   };
 
@@ -41,8 +47,8 @@ export default function ContactUs() {
     <section id="contact" className="relative py-20 overflow-hidden">
       {/* Background with blur effect */}
       <div
-        className="absolute inset-0 bg-[url('/src/assets/pexels-polina.jpg')] bg-cover bg-center "
-        style={{ filter: 'blur(0.2px)' }}
+        className="absolute inset-0 bg-[url('/src/assets/pexels-polina.jpg')] bg-cover bg-center"
+        style={{ filter: "blur(0.2px)" }}
       />
       <div className="absolute inset-0 bg-primary-100/90" />
 
@@ -59,6 +65,13 @@ export default function ContactUs() {
           </p>
         </motion.div>
 
+        {/* Success Message */}
+        {isSuccess && (
+          <div className="text-center mb-6 bg-green-500 text-white py-2 rounded-lg">
+            <p>Your message has been successfully sent!</p>
+          </div>
+        )}
+
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
@@ -69,17 +82,21 @@ export default function ContactUs() {
           >
             <div className="flex items-center space-x-4">
               <EnvelopeIcon className="h-6 w-6 text-primary-600" />
-              <span className="text-gray-700">mommycare@gmail.com</span>
+              <span className="text-gray-700">mommycareplus@gmail.com</span>
             </div>
             <div className="flex items-center space-x-4">
               <PhoneIcon className="h-6 w-6 text-primary-600" />
-              <span className="text-gray-700">+94 32 146 7798</span>
+              <span className="text-gray-700">+94 71 054 0195</span>
             </div>
             <div className="flex items-center space-x-4">
               <MapPinIcon className="h-6 w-6 text-primary-600" />
-              <span className="text-gray-700">Wadduwa, Sri Lanka</span>
+              <span className="text-gray-700">Panadura , Sri Lanka</span>
             </div>
           </motion.div>
+
+
+
+
 
           {/* Contact Form */}
           <motion.div
@@ -88,79 +105,56 @@ export default function ContactUs() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div>
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
-            <div>
-              <textarea
-                placeholder="Your Message"
-                rows="4"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="Your Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
-            <button
-              onClick={handleSendMessage}
-              className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-            >
-              SEND MESSAGE
-            </button>
+            <form onSubmit={onSubmit}>
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+              </div>
+              <br />
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+              </div>
+              <br />
+              <div>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  placeholder="Your Message"
+                  rows="4"
+                  className="w-full px-4 py-3 rounded-lg bg-white/80 border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+              </div>
+              <br />
+              <button
+                type="submit"
+                className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
           </motion.div>
         </div>
-
-        {/* Confirmation Modal */}
-        {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-4">Confirm Message</h3>
-              <p>Are you sure you want to send this message?</p>
-              <div className="mt-4 flex space-x-4">
-                <button
-                  onClick={confirmSend}
-                  className="bg-primary-600 text-white py-2 px-4 rounded-lg"
-                >
-                  Yes
-                </button>
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="bg-gray-400 text-white py-2 px-4 rounded-lg"
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
 }
-
-
-ContactForm.js
-

@@ -17,10 +17,8 @@
     background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     z-index: -1; /* Keep it behind other content */
   }
-  
-  
 
-.fixed-size-image {
+.fixed-size-image-home {
     width: auto; /* Maintain the original width */
     height: 400px; /* Fix the height */
     object-fit: contain; /* Maintain aspect ratio without cropping */
@@ -54,4 +52,10 @@
 .fixed-size-image-f:hover {
     transform: scale(0.9); /* Zoom in on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+.features-padding{
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
