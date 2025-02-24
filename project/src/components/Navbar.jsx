@@ -8,14 +8,23 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-40 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
+            {/* Logo with custom class */}
+            <motion.img 
+              src="\src\assets\logo.jpg" 
+              alt="Logo" 
+              className="logo-navbar h-12 w-12" 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            />
             <motion.span 
               className="text-2xl font-bold text-primary-600"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              MommyCare+
+              MOMMYcare+
             </motion.span>
           </div>
           

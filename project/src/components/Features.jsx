@@ -1,43 +1,44 @@
 import { motion } from 'framer-motion';
 import { ChatBubbleLeftRightIcon, HeartIcon, BookOpenIcon, ClipboardDocumentCheckIcon, SparklesIcon, ClipboardDocumentListIcon } from '@heroicons/react/24/outline';
 import '/src/styles.css';
+import googlePlayLogo from '../assets/googleplay.png';
 
 const features = [
   {
     icon: ChatBubbleLeftRightIcon,
     title: 'AI Chat Support',
     description: 'Get personalized, 24/7 support for all your postpartum care needs. Our AI-driven chat assistant is always available to answer your questions and offer advice.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    imageSrc: '/src/assets/aibot.png'
   },
   {
     icon: HeartIcon,
-    title: 'Baby Care',
-    description: 'Explore a range of tools and resources to ensure your newborn receives the best care possible. From feeding schedules to health tips, everything is here.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    title: 'EPDS Questionnaire',
+    description: 'Easily assess your emotional well-being with the Edinburgh Postnatal Depression Scale (EPDS) questionnaire. Get insights into your mental health and access resources for support.',
+    imageSrc: '/src/assets/ebps.png'
   },
   {
     icon: BookOpenIcon,
     title: 'Content Library',
-    description: 'Access expert-written articles, video tutorials, and guides on topics that matter most to you—postpartum recovery, baby care, and much more.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    description: 'Explore a rich collection of articles, guides, and expert advice on postpartum care, newborn care, breastfeeding, and overall well-being.',
+    imageSrc: '/src/assets/libary.png'
   },
   {
     icon: ClipboardDocumentCheckIcon,
     title: 'Vaccination Records',
-    description: 'Easily keep track of your baby\'s vaccination schedule with reminders and a clear, organized log. Stay on top of all immunizations and health checks.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    description: 'Keep track of your baby’s vaccination schedule with an easy-to-use digital record. Stay informed and ensure timely immunizations.',
+    imageSrc: '/src/assets/vacsination.png'
   },
   {
     icon: SparklesIcon,
     title: 'Self-Care Tips',
-    description: 'Prioritize your mental and physical well-being with expert-recommended self-care routines and advice tailored to new mothers.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    description: 'Discover daily self-care tips tailored for new mothers, including relaxation techniques, mindfulness exercises, and wellness advice to support your postpartum journey.',
+    imageSrc: '/src/assets/tips.png'
   },
   {
     icon: ClipboardDocumentListIcon,
     title: 'To-Do List',
-    description: 'Stay organized and on top of daily tasks with an intuitive to-do list. Manage appointments, baby care routines, and personal reminders with ease.',
-    imageSrc: '/src/assets/iPhone 15 Pro.png'
+    description: 'Organize your postpartum and baby care tasks effortlessly with a built-in to-do list. Stay on top of important activities, from doctor’s appointments to self-care routines.',
+    imageSrc: '/src/assets/todo.png'
   }
 ];
 
@@ -50,9 +51,19 @@ export default function Features() {
       <p className="text-center mb-6">
         Download MOMMYCare+ and get expert-backed support for your recovery, mental well-being, and baby care - all in one place!
       </p>
-      <button className="bg-white text-black font-semibold py-2 px-6 rounded-full shadow-md hover:bg-gray-200 transition">
+      {/* <button className="bg-white text-black font-semibold py-2 px-6 rounded-full shadow-md hover:bg-gray-200 transition">
         Download App
-      </button>
+      </button> */}
+      
+      <button className="bg-black text-white flex items-center justify-center px-4 py-2 rounded-md shadow-md hover:bg-gray-800 transition border-2 border-white">
+  <img src={googlePlayLogo} alt="Google Play" className="w-6 h-6 mr-2" />
+  <div className="flex flex-col items-start">
+    <span className="text-xs">GET IT ON</span>
+    <span className="text-lg font-semibold">Google Play</span>
+  </div>
+</button>
+
+
       </div>
 <br />
 

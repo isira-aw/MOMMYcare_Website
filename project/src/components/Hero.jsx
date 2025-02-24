@@ -7,19 +7,19 @@ import '/src/styles.css';
 
 const mockups = [
   {
-    title: 'Baby Care',
-    image: '/src/assets/iPhone 15 Pro.png',
-    alt: 'Baby Care Screen'
+    title: 'homeImage',
+    image: '/src/assets/homepage2.png',
+    alt: 'Screen'
   },
   {
-    title: 'Library',
-    image: '/src/assets/iPhone 13 Pro.png',
-    alt: 'Library Screen'
+    title: 'homeImage',
+    image: '/src/assets/libary.png',
+    alt: 'Screen'
   },
   {
-    title: 'AI Chat',
-    image: '/src/assets/Group 1.png',
-    alt: 'AI Chat Screen'
+    title: 'homeImage',
+    image: '/src/assets/homepage1.png',
+    alt: 'Screen'
   }
 ];
 
@@ -59,7 +59,7 @@ export default function Hero() {
               pagination={{
                 clickable: true,
               }}
-              className="w-full max-w-md mx-auto"
+              className="w-full max-w-md mx-auto home-pic-section"
             >
               
               {mockups.map((mockup) => (

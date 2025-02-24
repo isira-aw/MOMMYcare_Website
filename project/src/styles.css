@@ -19,10 +19,16 @@
   }
 
 .fixed-size-image-home {
-    width: auto; /* Maintain the original width */
-    height: 400px; /* Fix the height */
-    object-fit: contain; /* Maintain aspect ratio without cropping */
-    border-radius: 8px; /* Optional: Rounded corners */
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Adjust the height if necessary */
+  object-fit: cover; /* Keeps the aspect ratio intact */
+  border-radius: 1rem; /* Optional, for rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Rounded corners */
+  }
+  .home-pic-section{
+    max-width: 60rem; /* Adjust the width (e.g., max-w-3xl equivalent) */
+    margin: 0 auto; /* Center it */
   }
 
 .fixed-size-image-aboutus{
@@ -58,4 +64,14 @@
   padding: 20px;
   margin-left: 50px;
   margin-right: 50px;
+}
+.logo-navbar{
+  border-radius: 100%;
+
+}
+
+@media (max-width: 768px) {
+  .home-pic-section {
+    max-width: 30rem; /* Adjust the width (e.g., max-w-3xl equivalent) */
+    margin: 0 auto; /* Center it */}
 }

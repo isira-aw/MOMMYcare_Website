@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import "/src/styles.css";
 
+
 export default function ContactUs() {
   const [isSuccess, setIsSuccess] = useState(false);  // Track success message
   const [formData, setFormData] = useState({
@@ -45,6 +46,7 @@ export default function ContactUs() {
 
   return (
     <section id="contact" className="relative py-20 overflow-hidden">
+      
       {/* Background with blur effect */}
       <div
         className="absolute inset-0 bg-[url('/src/assets/pexels-polina.jpg')] bg-cover bg-center"
@@ -93,10 +95,6 @@ export default function ContactUs() {
               <span className="text-gray-700">Panadura , Sri Lanka</span>
             </div>
           </motion.div>
-
-
-
-
 
           {/* Contact Form */}
           <motion.div
@@ -155,6 +153,7 @@ export default function ContactUs() {
           </motion.div>
         </div>
       </div>
+      
     </section>
   );
 }

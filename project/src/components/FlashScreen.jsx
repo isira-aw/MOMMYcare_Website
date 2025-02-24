@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const text = "MommyCare+";
+const text = "MOMMYcare+";
 
 export default function FlashScreen({ onComplete }) {
   return (
