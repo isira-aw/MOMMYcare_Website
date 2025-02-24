@@ -3,33 +3,98 @@
 @tailwind utilities;
 
 :root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
-body {
-  margin: 0;
-  min-width: 500px;
-  min-height: 100vh;
+/* Your existing styles */
+.background-page {
+  background-image: url('/src/assets/_ (4) 1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  position: relative;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.background-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.fixed-size-image-home {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #8b5cf6;
-  border-radius: 4px;
+.home-pic-section {
+  max-width: 60rem;
+  margin: 0 auto;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
+.fixed-size-image-aboutus {
+  display: block;
+  margin: 0 auto;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fixed-size-image-aboutus:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-size-image-f {
+  display: block;
+  margin: 0 auto;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fixed-size-image-f:hover {
+  transform: scale(0.95);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.features-padding {
+  padding: 2rem;
+  margin: 0 1rem;
+}
+
+.logo-navbar {
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .home-pic-section {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .features-padding {
+    margin: 0 0.5rem;
+  }
+  
+  .fixed-size-image-aboutus,
+  .fixed-size-image-f {
+    height: 250px;
+  }
 }
